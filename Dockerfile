@@ -1,3 +1,3 @@
-FROM linuxserver/deluge:5b398f77-ls22
+FROM linuxserver/deluge
 
-RUN sed -i 's/this.passwordField.focus(true,300)/this.onLogin()/g' /usr/lib/python2.7/dist-packages/deluge/ui/web/js/deluge-all.js 
+RUN sed -i 's/this.passwordField.focus(!0,300)/this.onLogin()/g' /usr/lib/python3/dist-packages/deluge/ui/web/js/deluge-all.js
