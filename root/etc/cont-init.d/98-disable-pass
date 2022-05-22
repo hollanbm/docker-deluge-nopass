@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv bash
+
+# set login method, to use default password 'deluge'
+sed -i "s/passwordField.getValue()/'deluge'/g" /usr/lib/python3.10/site-packages/deluge/ui/web/js/deluge-all-debug.js
+
+# hide login prompt, and trigger login method
+sed -i "s/this.passwordField.focus(true, 300);/this.hide();\n\t\tthis.onLogin();/g" /usr/lib/python3.10/site-packages/deluge/ui/web/js/deluge-all-debug.js
+
+# eliminate initial password change prompt on first run
+sed -i 's/"first_login": true/"first_login": false/g' /config/web.config
